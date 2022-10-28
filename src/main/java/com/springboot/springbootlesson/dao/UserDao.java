@@ -3,25 +3,27 @@ package com.springboot.springbootlesson.dao;
 import com.springboot.springbootlesson.domain.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+@Component
 public class UserDao {
 
     private DataSource dataSource;
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     public UserDao(DataSource dataSource) {
         this.dataSource = dataSource;
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public void deleteAll() throws ClassNotFoundException, SQLException {
+    public int deleteAll() throws ClassNotFoundException, SQLException {
         String sql = "delete from users";
-        jdbcTemplate.update(sql);
+        return jdbcTemplate.update(sql);
     }
 
     public void add(User user) throws ClassNotFoundException, SQLException {
