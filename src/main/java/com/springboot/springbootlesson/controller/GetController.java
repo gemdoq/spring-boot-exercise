@@ -1,6 +1,6 @@
 package com.springboot.springbootlesson.controller;
 
-import com.springboot.springbootlesson.dto.MemberDto;
+import com.springboot.springbootlesson.domain.dto.MemberDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 

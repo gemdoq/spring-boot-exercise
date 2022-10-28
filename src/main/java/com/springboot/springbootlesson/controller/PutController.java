@@ -1,6 +1,6 @@
 package com.springboot.springbootlesson.controller;
 
-import com.springboot.springbootlesson.dto.MemberDto;
+import com.springboot.springbootlesson.domain.dto.MemberDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PutMapping;

@@ -1,6 +1,6 @@
 package com.springboot.springbootlesson.controller;
 
-import com.springboot.springbootlesson.dto.MemberDto;
+import com.springboot.springbootlesson.domain.dto.MemberDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;

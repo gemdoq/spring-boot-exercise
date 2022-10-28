@@ -1,4 +1,4 @@
-package com.springboot.springbootlesson.dto;
+package com.springboot.springbootlesson.domain.dto;
 
 public class MemberDto {
 
