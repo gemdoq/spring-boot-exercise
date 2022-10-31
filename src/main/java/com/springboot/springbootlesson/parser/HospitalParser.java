@@ -6,11 +6,10 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 
 public class HospitalParser implements Parser<Hospital> {
-
     @Override
     public Hospital parse(String str) {
         String[] row = str.split("\",\"");
-        System.out.println(Arrays.toString(row));
+//        System.out.println(Arrays.toString(row));
         int year = Integer.parseInt(row[5].substring(0,4));
         int month = Integer.parseInt(row[5].substring(4,6));
         int day = Integer.parseInt(row[5].substring(6,8));
