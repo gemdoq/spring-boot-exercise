@@ -28,6 +28,7 @@ class HospitalParserTest {
     HospitalDao hospitalDao;
 
     @Test
+    @DisplayName("추가와 조회가 잘 되는지")
     void addAndGet() throws SQLException, ClassNotFoundException {
         hospitalDao.deleteAll();
         assertEquals(0, hospitalDao.getCount());
