@@ -2,9 +2,11 @@ package com.springboot.springbootlesson.dao;
 
 import com.springboot.springbootlesson.domain.Hospital;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
 
+@Component
 public class HospitalDao {
     private final JdbcTemplate jdbcTemplate;
 

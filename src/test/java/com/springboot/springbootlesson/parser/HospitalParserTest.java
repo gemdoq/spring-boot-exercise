@@ -1,5 +1,6 @@
 package com.springboot.springbootlesson.parser;
 
+import com.springboot.springbootlesson.dao.HospitalDao;
 import com.springboot.springbootlesson.domain.Hospital;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,6 +23,16 @@ class HospitalParserTest {
     // bean이 heap영역에 계속 있어도 되고, new 생성자를 통해 한번만 생성하고 더이상 생성안하게끔(singleton)
     @Autowired
     ReadLineContext<Hospital> hospitalReadLineContext;
+
+    @Autowired
+    HospitalDao hospitalDao;
+
+    @Test
+    void add() throws SQLException, ClassNotFoundException {
+        HospitalParser hospitalParser = new HospitalParser();
+        Hospital hospital = hospitalParser.parse(line1);
+        hospitalDao.add(hospital);
+    }
 
     @Test
     @DisplayName("데이터가 파싱 잘 되는지")
