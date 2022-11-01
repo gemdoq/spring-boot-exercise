@@ -31,7 +31,9 @@ class HospitalParserTest {
     void add() throws SQLException, ClassNotFoundException {
         HospitalParser hospitalParser = new HospitalParser();
         Hospital hospital = hospitalParser.parse(line1);
-        hospitalDao.add(hospital);
+//        hospitalDao.add(hospital);
+
+        assertEquals(1, hospitalDao.getCount());
     }
 
     @Test
