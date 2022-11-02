@@ -2,6 +2,8 @@ package com.springboot.springbootlesson.parser;
 
 import com.springboot.springbootlesson.dao.HospitalDao;
 import com.springboot.springbootlesson.domain.Hospital;
+import com.springboot.springbootlesson.domain.dto.HospitalDto;
+import com.springboot.springbootlesson.service.HospitalService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ class HospitalParserTest {
 
     @Autowired
     HospitalDao hospitalDao;
+
+    @Autowired
+    HospitalService hospitalService;
 
     @Test
     @DisplayName("추가와 조회가 잘 되는지")
@@ -61,6 +66,7 @@ class HospitalParserTest {
     @Test
     @DisplayName("데이터가 파싱 잘 되는지")
     void readLineTest() throws IOException {
+        hospitalDao.deleteAll();
         String filename = "/Users/a/Downloads/fulldata_01_01_02_P_의원1.csv";
         List<Hospital> hospitalList = hospitalReadLineContext.readByLine(filename);
         assertTrue(hospitalList.size() > 100);
@@ -68,7 +74,11 @@ class HospitalParserTest {
         for (int i = 0; i < 10; i++) {
             System.out.println(hospitalList.get(i).getHospitalName());
         }
-        System.out.printf("파싱된 데이터 개수:", hospitalList.size());
+        System.out.printf("파싱된 데이터 개수: %d\n", hospitalList.size());
+//        int cnt = this.hospitalService.insertLargeVolumeHospitalData(filename);
+//        assertTrue(cnt > 1000);
+//        assertTrue(cnt > 10000);
+//        System.out.printf("파싱된 데이터 개수:%d", cnt);
     }
 
     @Test
