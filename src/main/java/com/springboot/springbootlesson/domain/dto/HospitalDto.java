@@ -13,7 +13,7 @@ public class HospitalDto {
     private int patientRoomCount;
     private float totalAreaSize;
 
-    public HospitalDto findById(Hospital hospital) {
+    public static HospitalDto findById(Hospital hospital) {
         HospitalDto hospitalDto = new HospitalDto();
 
         hospitalDto.hospitalName = hospital.getHospitalName();
