@@ -68,17 +68,17 @@ class HospitalParserTest {
     void readLineTest() throws IOException {
         hospitalDao.deleteAll();
         String filename = "/Users/a/Downloads/fulldata_01_01_02_P_의원1.csv";
-        List<Hospital> hospitalList = hospitalReadLineContext.readByLine(filename);
-        assertTrue(hospitalList.size() > 100);
-        assertTrue(hospitalList.size() > 1000);
-        for (int i = 0; i < 10; i++) {
-            System.out.println(hospitalList.get(i).getHospitalName());
-        }
-        System.out.printf("파싱된 데이터 개수: %d\n", hospitalList.size());
-//        int cnt = this.hospitalService.insertLargeVolumeHospitalData(filename);
-//        assertTrue(cnt > 1000);
-//        assertTrue(cnt > 10000);
-//        System.out.printf("파싱된 데이터 개수:%d", cnt);
+//        List<Hospital> hospitalList = hospitalReadLineContext.readByLine(filename);
+//        assertTrue(hospitalList.size() > 100);
+//        assertTrue(hospitalList.size() > 1000);
+//        for (int i = 0; i < 10; i++) {
+//            System.out.println(hospitalList.get(i).getHospitalName());
+//        }
+//        System.out.printf("파싱된 데이터 개수: %d\n", hospitalList.size());
+        int cnt = this.hospitalService.insertLargeVolumeHospitalData(filename);
+        assertTrue(cnt > 1000);
+        assertTrue(cnt > 10000);
+        System.out.printf("파싱된 데이터 개수:%d", cnt);
     }
 
     @Test
