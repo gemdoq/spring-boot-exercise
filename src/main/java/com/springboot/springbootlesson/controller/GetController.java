@@ -18,7 +18,7 @@ public class GetController {
         return "Hello World";
     }
 
-    //http://localhost:8080/api/v1/get-api/hello
+    //http://localhost:8080/api/v1/get-api/name
     @GetMapping("/name")
     public String getName() {
         log.info("getName으로 요청이 들어왔습니다.");
