@@ -13,7 +13,6 @@ import java.util.Optional;
 
 @Service
 public class HospitalService {
-
     private final ReadLineContext<Hospital> hospitalReadLineContext;
 
     private final HospitalDao hospitalDao;
@@ -22,16 +21,18 @@ public class HospitalService {
         this.hospitalReadLineContext = hospitalReadLineContext;
         this.hospitalDao = hospitalDao;
     }
-
-    @Transactional
+    // AOP 관점지향프로그래밍 부가기능 < 트랜잭션 : 모듈화 ( 잘못된 부분이 있을 경우 모듈을 재시작 ) >
+    @Transactional // 병렬처리 속도개선 > 쓰레드
     public int insertLargeVolumeHospitalData(String filename) {
         List<Hospital> hospitalList;
         try {
             hospitalList = hospitalReadLineContext.readByLine(filename);
             System.out.println("파싱이 끝났습니다.");
-            hospitalList.stream()
-                    .parallel()
-                    .forEach(hospital -> {
+
+            //병렬작업으로 hospitalDao
+            hospitalList.stream() // 스트림 = 메모리버퍼(heap)??? flush... wipe...??? 이거를 생략할 수 있대요...
+                    .parallel() // 한번에 병렬로
+                    .forEach(hospital -> { // 각각 가져와서
                         try {
                             this.hospitalDao.add(hospital); // db에 insert하는 구간
                         } catch (Exception e) {
